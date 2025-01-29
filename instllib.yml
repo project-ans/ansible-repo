@@ -1,7 +1,6 @@
 ---
 - name: Install ansible-pylibssh
   hosts: localhost
-  become: yes
   tasks:
     - name: Install ansible-pylibssh
       pip:
