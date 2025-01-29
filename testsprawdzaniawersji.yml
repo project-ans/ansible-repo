@@ -1,0 +1,19 @@
+---
+- name: Połączenie z Cisco Switch
+  hosts: 10.0.41.19
+  gather_facts: no
+  vars:
+    ansible_user: "admin"
+    ansible_password: "P@ssw0rd"
+    ansible_network_os: "ios"
+    ansible_connection: "network_cli"
+  tasks:
+    - name: Pobranie wersji oprogramowania switcha
+      ios_command:
+        commands:
+          - show version
+      register: output
+
+    - name: Wyświetlenie wyniku
+      debug:
+        msg: "{{ output.stdout_lines }}"
