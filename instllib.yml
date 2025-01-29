@@ -1,6 +1,7 @@
 ---
 - name: Install ansible-pylibssh
   hosts: localhost
+  gather_facts: no
   tasks:
     - name: Install ansible-pylibssh
       pip:
