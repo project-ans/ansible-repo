@@ -1,0 +1,8 @@
+---
+    - name: Install Ansible collections for Cisco IOS
+      command: ansible-galaxy collection install cisco.ios ansible.netcommon
+      register: collection_install
+
+    - name: Show installation result
+      debug:
+        msg: "{{ collection_install.stdout_lines }}"
