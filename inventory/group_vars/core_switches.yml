@@ -1,0 +1,11 @@
+trunk_vlans:
+  - "{{ vlan_bureau_id }}"
+  - "{{ vlan_it_id }}"
+  - "{{ vlan_servers_id }}"
+
+uplink_ports:
+  - name: e0/2
+  - name: e0/3
+  - name: e1/0
+  - name: e1/1
+  - name: e3/3

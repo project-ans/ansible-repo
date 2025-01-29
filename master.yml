@@ -1,0 +1,6 @@
+---
+- name: Configure Core Switches
+  hosts: testsw
+  gather_facts: no
+  roles:
+    - vlan_config
