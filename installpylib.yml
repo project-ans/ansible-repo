@@ -1,0 +1,21 @@
+---
+- name: Install ansible-pylibssh
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install dependencies (Debian-based)
+      apt:
+        name: python3-pip
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Install dependencies (RedHat-based)
+      dnf:
+        name: python3-pip
+        state: present
+      when: ansible_facts['os_family'] == 'RedHat'
+
+    - name: Install ansible-pylibssh
+      pip:
+        name: ansible-pylibssh
+        state: present
