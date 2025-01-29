@@ -1,6 +1,6 @@
 ---
 - name: Install ansible-pylibssh
-  hosts: all
+  hosts: localhost
   become: yes
   tasks:
     - name: Install dependencies (Debian-based)
