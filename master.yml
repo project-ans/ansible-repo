@@ -4,3 +4,4 @@
   gather_facts: no
   roles:
     - vlan_config
+    - access_config

@@ -1,0 +1,11 @@
+bureau_ports:
+  - name: e1/1
+  - name: e1/2
+
+it_ports:
+  - name: e2/1
+  - name: e2/2
+
+servers_ports:
+  - name: e3/1
+  - name: e3/2
