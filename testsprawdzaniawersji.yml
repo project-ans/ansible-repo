@@ -9,9 +9,8 @@
     ansible_connection: "network_cli"
   tasks:
     - name: Pobranie wersji oprogramowania switcha
-      ios_command:
-        commands:
-          - show version
+      cisco.ios.ios_command:
+        commands: show version
       register: output
 
     - name: Wyświetlenie wyniku
