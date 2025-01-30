@@ -10,4 +10,4 @@
       - "name IT_VLAN"
       - "vlan {{ vlan_servers_id }}"
       - "name SERVERS_VLAN"
-    save_when: modified
+#    save_when: modified
