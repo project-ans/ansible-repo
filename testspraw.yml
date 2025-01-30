@@ -1,0 +1,13 @@
+---
+- name: Pobranie wersji systemu ze switcha Cisco
+  hosts: switches
+  gather_facts: no
+  tasks:
+    - name: Wykonaj "show version"
+      cisco.ios.ios_command:
+        commands: show version
+      register: output
+
+    - name: Wyświetl wynik
+      debug:
+        msg: "{{ output.stdout_lines }}"
