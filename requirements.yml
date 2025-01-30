@@ -1,4 +1,6 @@
-collections:
-- name: cisco.ios
-python:
+galaxy: |
+  ---
+  collections:
+  - name: cisco.ios
+python: |
 ansible-pylibssh
