@@ -1,7 +1,30 @@
 ---
-- name: Configure Core Switches
+- name: Configure production switches
   hosts: production_switches
   gather_facts: no
   roles:
+    - base_config
     - vlan_config
     - access_config
+    - trunk_config
+    - stp_config
+
+  tasks:
+    - name: Save production switches configuration  
+      cisco.ios.ios_config:
+#        save_when: modified
+
+- name: Configure production routers
+  hosts: production_routers
+  gather_facts: no
+  roles:
+    - base_config
+    - vlan_config
+    - ospf_config
+    - acl_config
+    - hsrp_config
+
+  tasks:
+    - name: Save production switches configuration  
+      cisco.ios.ios_config:
+#        save_when: modified  
