@@ -28,3 +28,8 @@ vlan_it_gateway: 10.0.30.254
 vlan_servers_gateway: 10.0.50.254
 vlan_mgmt_gateway: 10.0.41.254
 
+trunk_vlans:
+  - "{{ vlan_bureau_id }}"
+  - "{{ vlan_it_id }}"
+  - "{{ vlan_servers_id }}"
+

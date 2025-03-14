@@ -6,7 +6,7 @@
       - "switchport mode access"
       - "switchport access vlan {{ vlan_bureau_id }}"
       - "no shutdown"
-  loop: "{{ bureau_ports }}"
+  loop: "{{ bureau_access_ports }}"
 
 - name: Configure IT access ports
   cisco.ios.ios_config:
@@ -15,7 +15,7 @@
       - "switchport mode access"
       - "switchport access vlan {{ vlan_it_id }}"
       - "no shutdown"
-  loop: "{{ it_ports }}"
+  loop: "{{ it_access_ports }}"
 
 - name: Configure server access ports
   cisco.ios.ios_config:
@@ -24,5 +24,5 @@
       - "switchport mode access"
       - "switchport access vlan {{ vlan_servers_id }}"
       - "no shutdown"
-  loop: "{{ servers_ports }}"
+  loop: "{{ servers_access_ports }}"
 
