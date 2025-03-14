@@ -1,0 +1,7 @@
+access_config:
+  - vlan_id: "{{ vlan_bureau_id }}"
+    ports: "{{ bureau_access_ports }}"
+  - vlan_id: "{{ vlan_it_id }}"
+    ports: "{{ it_access_ports }}"
+  - vlan_id: "{{ vlan_servers_id }}"
+    ports: "{{ servers_access_ports }}"
