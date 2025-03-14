@@ -1,15 +1,11 @@
 # group_vars/all.yml
 
-vlan_core_id: 10
 vlan_bureau_id: 20
 vlan_it_id: 30
 vlan_servers_id: 50
 vlan_mgmt_id: 41
 
 # Adresacja VLANów
-vlan_core_network: 10.0.10.0
-vlan_core_mask: 255.255.255.0
-
 vlan_bureau_network: 10.0.20.0
 vlan_bureau_mask: 255.255.255.0
 

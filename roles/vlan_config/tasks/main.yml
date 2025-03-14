@@ -2,8 +2,6 @@
 - name: Create VLANs on switch
   cisco.ios.ios_config:
     lines:
-      - "vlan {{ vlan_core_id }}"
-      - "name CORE_VLAN"
       - "vlan {{ vlan_bureau_id }}"
       - "name BUREAU_VLAN"
       - "vlan {{ vlan_it_id }}"

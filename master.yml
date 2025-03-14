@@ -3,11 +3,11 @@
   hosts: production_switches
   gather_facts: no
   roles:
-#    - base_config
+    - base_config
     - vlan_config
     - access_config
     - trunk_config
-#   - stp_config
+    - stp_config
 
 #  tasks:
 #    - name: Save production switches configuration  

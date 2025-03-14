@@ -1,28 +1,19 @@
 ---
-- name: Configure bureau access ports
-  cisco.ios.ios_config:
-    lines:
-      - "interface {{ item.name }}"
-      - "switchport mode access"
-      - "switchport access vlan {{ vlan_bureau_id }}"
-      - "no shutdown"
-  loop: "{{ bureau_access_ports }}"
+vars:
+  access_config:
+    - vlan_id: "{{ vlan_bureau_id }}"
+      ports: "{{ bureau_access_ports }}"
+    - vlan_id: "{{ vlan_it_id }}"
+      ports: "{{ it_access_ports }}"
+    - vlan_id: "{{ vlan_servers_id }}"
+      ports: "{{ servers_access_ports }}"
 
-- name: Configure IT access ports
-  cisco.ios.ios_config:
-    lines:
-      - "interface {{ item.name }}"
-      - "switchport mode access"
-      - "switchport access vlan {{ vlan_it_id }}"
-      - "no shutdown"
-  loop: "{{ it_access_ports }}"
-
-- name: Configure server access ports
-  cisco.ios.ios_config:
-    lines:
-      - "interface {{ item.name }}"
-      - "switchport mode access"
-      - "switchport access vlan {{ vlan_servers_id }}"
-      - "no shutdown"
-  loop: "{{ servers_access_ports }}"
-
+tasks:
+  - name: Configure access ports
+    cisco.ios.ios_config:
+      lines:
+        - "interface {{ item.1.name }}"
+        - "switchport mode access"
+        - "switchport access vlan {{ item.0.vlan_id }}"
+        - "no shutdown"
+    loop: "{{ access_config | subelements('ports') }}"
