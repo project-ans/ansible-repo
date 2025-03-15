@@ -1,6 +1,8 @@
-- name: Debug hsrp_priority
+- name: Debug VLAN i hsrp_priority
   debug:
-    var: hsrp_priority
+    msg: "Host={{ inventory_hostname }} VLAN={{ item.1.vlan }} hsrp_priority_keys={{ hsrp_priority.keys() }}"
+  loop: "{{ interfaces | subelements('subifs') }}"
+
 
 - name: Configure HSRP for each VLAN sub-interface
   cisco.ios.ios_config:
