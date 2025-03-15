@@ -4,3 +4,5 @@ hsrp_priority:
   20: 100
   30: 100
   50: 120
+
+ospf_router_id: "2.2.2.2"
