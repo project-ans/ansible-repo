@@ -9,8 +9,7 @@
     dest: "/tmp/backup_{{ inventory_hostname }}.cfg"
 
 - name: Upload backup to Nextcloud
-  command:
-    cmd: "python3 /tmp/backup.py /tmp/backup_{{ inventory_hostname }}.cfg"
+  command: python3 /tmp/backup.py /tmp/backup_{{ inventory_hostname }}.cfg
   environment:
     NEXTCLOUD_USERNAME: "nextclouduser"
     NEXTCLOUD_PASSWORD: "Pa55word"
