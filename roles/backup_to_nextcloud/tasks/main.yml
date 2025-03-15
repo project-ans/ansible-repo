@@ -1,18 +1,14 @@
-#- name: Get current configuration
-#  cisco.ios.ios_command:
-#    commands:
-#      - show running-config
-#  register: running_conf_{{ inventory_hostname }}
-
-- name: Save configuration to a file
+- name: Get current configuration
   cisco.ios.ios_command:
     commands:
       - show running-config
   register: running_conf
+
+- name: Save configuration to a file
   local_action:
     module: copy
     content: "{{ running_conf.stdout[0] }}"
-    dest: "/tmp/cisco_backup_{{ inventory_hostname }}.cfg"
+    dest: "/tmp/cisco_backup.cfg"
 #  run_once: true
 
 - name: Set date
@@ -27,5 +23,5 @@
     NEXTCLOUD_URL: "http://10.0.41.21/"
     NEXTCLOUD_USERNAME: "nextclouduser"
     NEXTCLOUD_PASSWORD: "{{ nextcloud_password }}"
-  command: "python3 backup.py /tmp/cisco_backup_{{ inventory_hostname }}.cfg Documents/{{ inventory_hostname }}/cisco_backup_{{ inventory_hostname }}_{{ date_stamp }}.cfg"
+  command: "python3 backup.py /tmp/cisco_backup.cfg Documents/{{ inventory_hostname }}/cisco_backup_{{ inventory_hostname }}_{{ date_stamp }}.cfg"
 
