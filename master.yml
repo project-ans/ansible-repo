@@ -15,7 +15,7 @@
 #        save_when: modified
 
 - name: Configure routers
-  hosts: outers
+  hosts: routers
   gather_facts: no
   roles:
 #    - base_config
