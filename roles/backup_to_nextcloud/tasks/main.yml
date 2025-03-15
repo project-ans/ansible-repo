@@ -8,7 +8,7 @@
   local_action:
     module: copy
     content: "{{ running_conf.stdout[0] }}"
-    dest: "/tmp/cisco_backup.cfg"
+    dest: "/tmp/cisco_backup_{{ inventory_hostname }}.cfg"
 #  run_once: true
 
 - name: Set date
