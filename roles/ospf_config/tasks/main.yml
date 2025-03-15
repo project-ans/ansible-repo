@@ -17,4 +17,4 @@
       - "router ospf {{ ospf_process_id }}"
     lines:
       - "network {{ item.network }} {{ item.wildcard }} area {{ item.area }}"
-    loop: "{{ ospf_networks }}"
+  loop: "{{ ospf_networks }}"
