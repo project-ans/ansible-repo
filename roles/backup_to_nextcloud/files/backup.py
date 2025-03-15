@@ -9,7 +9,6 @@ def upload_file(local_file_path, remote_file_path):
     USERNAME = os.getenv("NEXTCLOUD_USERNAME")
     PASSWORD = os.getenv("NEXTCLOUD_PASSWORD")
 
-    # Inicjalizacja obiektu NextCloud
     nc = NextCloud(
         endpoint=NEXTCLOUD_URL,
         user=USERNAME,
@@ -27,14 +26,7 @@ def upload_file(local_file_path, remote_file_path):
         print(f"Błąd podczas przesyłania pliku: {e}")
 
 if __name__ == "__main__":
-    """
-    Wywołanie: python3 nextcloud_upload.py [LOCAL_FILE_PATH] [REMOTE_FILE_PATH]
-
-    przykład:
-    python3 nextcloud_upload.py /tmp/kopia.cfg Documents/kopia.cfg
-    """
     if len(sys.argv) != 3:
-        print("Użycie: python3 nextcloud_upload.py [sciezka_pliku_lokalnie] [sciezka_pliku_na_nextcloud]")
         sys.exit(1)
 
     local_file = sys.argv[1]
