@@ -22,6 +22,6 @@
   environment:
     NEXTCLOUD_URL: "http://10.0.41.21/"
     NEXTCLOUD_USERNAME: "nextclouduser"
-    NEXTCLOUD_PASSWORD: "Pa55word"
+    NEXTCLOUD_PASSWORD: "{{ nextcloud_password }}"
   command: "python3 backup.py /tmp/cisco_backup.cfg Documents/{{ inventory_hostname }}/cisco_backup_{{ inventory_hostname }}_{{ date_stamp }}.cfg"
 
