@@ -1,0 +1,7 @@
+- name: Create sub-interfaces for each VLAN on each physical interface
+  cisco.ios.ios_config:
+    lines:
+      - "interface {{ item.0.name }}.{{ item.1.vlan }}"
+      - "encapsulation dot1q {{ item.1.vlan }}"
+      - "ip address 10.0.{{ item.1.vlan }}.{{ last_octet }} 255.255.255.0"
+  loop: "{{ interfaces | subelements('subifs') }}"

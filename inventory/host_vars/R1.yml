@@ -1,0 +1,8 @@
+last_octet: 1
+
+hsrp_priority:
+  20: 120
+  30: 120
+  50: 100
+
+

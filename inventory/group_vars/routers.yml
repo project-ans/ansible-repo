@@ -1,0 +1,11 @@
+interfaces:
+  - name: e0/0
+    subifs:
+      - { vlan: 20 }
+      - { vlan: 30 }
+  - name: e0/1
+    subifs:
+      - { vlan: 50 }
+
+  virtual_ip_last_octet: 254
+
