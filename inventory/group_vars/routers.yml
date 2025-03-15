@@ -7,5 +7,5 @@ interfaces:
     subifs:
       - { vlan: 50 }
 
-  virtual_ip_last_octet: 254
+virtual_ip_last_octet: 254
 
