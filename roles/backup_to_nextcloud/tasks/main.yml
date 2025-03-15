@@ -1,15 +1,19 @@
-- name: Get current configuration
+#- name: Get current configuration
+#  cisco.ios.ios_command:
+#    commands:
+#      - show running-config
+#  register: running_conf_{{ inventory_hostname }}
+
+- name: Save configuration to a file
   cisco.ios.ios_command:
     commands:
       - show running-config
-  register: running_conf_{{ inventory_hostname }}
-
-- name: Save configuration to a file
+  register: running_conf
   local_action:
     module: copy
-    content: "{{ running_conf_{{ inventory_hostname }}.stdout[0] }}"
+    content: "{{ running_conf.stdout[0] }}"
     dest: "/tmp/cisco_backup_{{ inventory_hostname }}.cfg"
-  run_once: true
+#  run_once: true
 
 - name: Set date
   set_fact:
