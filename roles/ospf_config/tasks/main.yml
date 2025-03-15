@@ -1,8 +1,8 @@
-- name: Configure OSPF basic process and router-id
-  cisco.ios.ios_config:
-    lines:
-      - "router ospf {{ ospf_process_id }}"
-      - "router-id {{ ospf_router_id }}"
+#- name: Configure OSPF basic process and router-id
+#  cisco.ios.ios_config:
+#    lines:
+#      - "router ospf {{ ospf_process_id }}"
+#      - "router-id {{ ospf_router_id }}"
 
 - name: Configure OSPF networks
   cisco.ios.ios_config:
