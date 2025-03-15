@@ -1,0 +1,17 @@
+- name: Backup running config from switch
+  cisco.ios.ios_command:
+    commands: "show running-config"
+  register: running_config
+
+- name: Save backup to local file
+  copy:
+    content: "{{ running_config.stdout[0] }}"
+    dest: "/tmp/backup_{{ inventory_hostname }}.cfg"
+
+- name: Upload backup to Nextcloud
+  command:
+    cmd: "python3 /tmp/backup.py /tmp/backup_{{ inventory_hostname }}.cfg"
+  environment:
+    NEXTCLOUD_USERNAME: "nextclouduser"
+    NEXTCLOUD_PASSWORD: "Pa55word"
+    NEXTCLOUD_URL: "http://10.0.41.21"
