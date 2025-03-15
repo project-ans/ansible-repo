@@ -20,7 +20,7 @@
   roles:
 #    - base_config
     - subint_config
-#    - ospf_config
+    - ospf_config
     - hsrp_config
 
 #  tasks:
