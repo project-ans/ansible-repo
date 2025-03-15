@@ -1,16 +1,25 @@
-- name: Backup running config from switch
+- name: Pobierz bieżącą konfigurację switcha Cisco
   cisco.ios.ios_command:
-    commands: "show running-config"
-  register: running_config
+    commands:
+      - show running-config
+  register: running_conf
 
-- name: Save backup to local file
-  copy:
-    content: "{{ running_config.stdout[0] }}"
-    dest: "/tmp/backup_{{ inventory_hostname }}.cfg"
+- name: Zapisz konfigurację do pliku na kontrolerze Ansible
+  # 'local_action' lub 'delegate_to: localhost' aby zapisać lokalnie
+  local_action:
+    module: copy
+    content: "{{ running_conf.stdout[0] }}"
+    dest: "/tmp/cisco_backup.cfg"
+  run_once: true
 
-- name: Upload backup to Nextcloud
-  command: python3 /tmp/backup.py /tmp/backup_{{ inventory_hostname }}.cfg
+- name: Uruchom skrypt Pythona wysyłający backup na Nextcloud
+  become: false
+  args:
+    chdir: "{{ role_path }}/files"
   environment:
-    NEXTCLOUD_USERNAME: "nextclouduser"
-    NEXTCLOUD_PASSWORD: "Pa55word"
-    NEXTCLOUD_URL: "http://10.0.41.21"
+    NEXTCLOUD_URL: "http://10.0.41.21/"
+    NEXTCLOUD_USERNAME: "{{ nextcloud_username }}"
+    NEXTCLOUD_PASSWORD: "{{ nextcloud_password }}"
+    LOCAL_FILE_PATH: "/tmp/cisco_backup.cfg"
+    REMOTE_FILE_PATH: "Documents/cisco_backup_{{ inventory_hostname }}.cfg"
+  command: "python3 upload_to_nextcloud.py"

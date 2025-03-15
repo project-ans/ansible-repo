@@ -1,20 +1,43 @@
+#!/usr/bin/env python3
+
 import os
 import sys
-from nextcloud_client import Client
+from nextcloud import NextCloud
 
-# Pobranie zmiennych środowiskowych
-NEXTCLOUD_URL = os.getenv("NEXTCLOUD_URL")
-NEXTCLOUD_USERNAME = os.getenv("NEXTCLOUD_USERNAME")
-NEXTCLOUD_PASSWORD = os.getenv("NEXTCLOUD_PASSWORD")
+def upload_file(local_file_path, remote_file_path):
+    NEXTCLOUD_URL = os.getenv("NEXTCLOUD_URL")
+    USERNAME = os.getenv("NEXTCLOUD_USERNAME")
+    PASSWORD = os.getenv("NEXTCLOUD_PASSWORD")
 
-# Sprawdzenie argumentów
-if len(sys.argv) != 2:
-    print("Usage: python3 upload_to_nextcloud.py <backup_file>")
-    sys.exit(1)
+    # Inicjalizacja obiektu NextCloud
+    nc = NextCloud(
+        endpoint=NEXTCLOUD_URL,
+        user=USERNAME,
+        password=PASSWORD,
+        session_options={"verify": True}
+    )
 
-backup_file = sys.argv[1]
-filename = os.path.basename(backup_file)
+    try:
+        response = nc.upload_file(local_file_path, remote_file_path)
+        if response.status_code in (200, 201, 204):
+            print(f"Plik został pomyślnie przesłany: {remote_file_path}")
+        else:
+            print(f"Nie udało się przesłać pliku. Status: {response.status_code}")
+    except Exception as e:
+        print(f"Błąd podczas przesyłania pliku: {e}")
 
-# Połączenie z Nextcloud
-nc = Client(NEXTCLOUD_URL)
-nc.login(NEXTCLOUD_USERNAME, NEXTCLOUD_PASSWORD)
+if __name__ == "__main__":
+    """
+    Wywołanie: python3 nextcloud_upload.py [LOCAL_FILE_PATH] [REMOTE_FILE_PATH]
+
+    przykład:
+    python3 nextcloud_upload.py /tmp/kopia.cfg Documents/kopia.cfg
+    """
+    if len(sys.argv) != 3:
+        print("Użycie: python3 nextcloud_upload.py [sciezka_pliku_lokalnie] [sciezka_pliku_na_nextcloud]")
+        sys.exit(1)
+
+    local_file = sys.argv[1]
+    remote_file = sys.argv[2]
+
+    upload_file(local_file, remote_file)
