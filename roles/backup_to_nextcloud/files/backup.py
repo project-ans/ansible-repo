@@ -18,14 +18,3 @@ filename = os.path.basename(backup_file)
 # Połączenie z Nextcloud
 nc = Client(NEXTCLOUD_URL)
 nc.login(NEXTCLOUD_USERNAME, NEXTCLOUD_PASSWORD)
-
-# Sprawdzenie folderu "backups"
-backup_folder = "/backups/"
-if not nc.file_exists(backup_folder):
-    nc.mkdir(backup_folder)
-
-# Przesyłanie pliku na Nextcloud
-remote_path = f"{backup_folder}{filename}"
-nc.put_file(remote_path, backup_file)
-
-print(f"Backup {filename} uploaded successfully to Nextcloud at {remote_path}")
