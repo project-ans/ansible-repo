@@ -1,12 +1,20 @@
-#- name: Configure OSPF basic process and router-id
-#  cisco.ios.ios_config:
-#    lines:
-#      - "router ospf {{ ospf_process_id }}"
-#      - "router-id {{ ospf_router_id }}"
-
-- name: Configure OSPF networks
+- name: Configure OSPF basic process and router-id
   cisco.ios.ios_config:
     lines:
       - "router ospf {{ ospf_process_id }}"
+      - "router-id {{ ospf_router_id }}"
+
+#- name: Configure OSPF networks
+#  cisco.ios.ios_config:
+#    lines:
+#      - "router ospf {{ ospf_process_id }}"
+#      - "network {{ item.network }} {{ item.wildcard }} area {{ item.area }}"
+#  loop: "{{ ospf_networks }}"
+
+- name: Configure OSPF networks
+  cisco.ios.ios_config:
+    parents:
+      - "router ospf {{ ospf_process_id }}"
+    lines:
       - "network {{ item.network }} {{ item.wildcard }} area {{ item.area }}"
-  loop: "{{ ospf_networks }}"
+    loop: "{{ ospf_networks }}"
