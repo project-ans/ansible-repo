@@ -22,4 +22,4 @@
     NEXTCLOUD_PASSWORD: "Pa55word"
     LOCAL_FILE_PATH: "/tmp/cisco_backup.cfg"
     REMOTE_FILE_PATH: "Documents/cisco_backup_{{ inventory_hostname }}.cfg"
-  command: "python3 upload_to_nextcloud.py"
+  command: "python3 backup.py"
