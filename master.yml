@@ -1,17 +1,15 @@
 ---
-#- name: Configure switches
-#  hosts: switches
-#  gather_facts: no
-#  roles:
-#    - base_config
-#    - vlan_config
-#    - access_config
-#    - trunk_config
-#    - stp_config
-#    - backup_to_nextcloud
-
+- name: Configure switches
+  hosts: switches
+  gather_facts: no
+  roles:
+    - base_config
+    - vlan_config
+    - access_config
+    - trunk_config
+    - stp_config
 #  tasks:
-#    - name: Save production switches configuration  
+#    - name: Save switches configuration  
 #      cisco.ios.ios_config:
 #        save_when: modified
 
@@ -20,17 +18,19 @@
   gather_facts: no
   roles:
     - etherchannel_config
+#  tasks:
+#    - name: Save etherchannel configuration  
+#      cisco.ios.ios_config:
+#        save_when: modified
 
-#- name: Configure routers
-#  hosts: routers
-#  gather_facts: no
-#  roles:
-#    - base_config
-#    - subint_config
-#    - ospf_config
-#    - hsrp_config
-#    - backup_to_nextcloud
-
+- name: Configure routers
+  hosts: routers
+  gather_facts: no
+  roles:
+    - base_config
+    - subint_config
+    - ospf_config
+    - hsrp_config
 #  tasks:
 #    - name: Save production switches configuration  
 #      cisco.ios.ios_config:
