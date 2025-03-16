@@ -1,6 +1,6 @@
 - name: Configure EtherChannel on physical interfaces
   cisco.ios.ios_config:
+  parents: "interface {{ item }}"
     lines:
-      - "interface {{ item }}"
       - "channel-group {{ etherchannel_group }} mode desirable"
   loop: "{{ etherchannel_ports }}"
