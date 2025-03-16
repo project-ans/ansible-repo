@@ -16,12 +16,12 @@
   roles:
     - access_config
 
-- name: Configure etherchannel
-  hosts: core_switches
-  gather_facts: no
-  serial: 1
-  roles:
-    - etherchannel_config
+#- name: Configure etherchannel
+#  hosts: core_switches
+#  gather_facts: no
+#  serial: 1
+#  roles:
+#    - etherchannel_config
 
 - name: Configure routers
   hosts: routers
