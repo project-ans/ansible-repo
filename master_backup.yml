@@ -1,0 +1,8 @@
+---
+- name: Make backup of all devices
+  hosts: all
+  gather_facts: no
+  roles:
+    - backup_to_nextcloud
+
+    
