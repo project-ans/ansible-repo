@@ -4,3 +4,5 @@
     lines:
       - "channel-group {{ etherchannel_group }} mode desirable"
   loop: "{{ etherchannel_ports }}"
+  become: yes
+  become_method: enable
