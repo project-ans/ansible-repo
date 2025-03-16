@@ -5,33 +5,30 @@
   roles:
     - base_config
     - vlan_config
-    - access_config
     - trunk_config
+    - stp_config
+
+- name: Configure access ports
+  hosts: access_switches
+  gather_facts: no
+  roles:
+    - access_config
+
+- name: Configure etherchannel
+  hosts: core_switches
+  gather_facts: no
+  roles:
     - etherchannel_config
-#    - stp_config
-#  tasks:
-#    - name: Save switches configuration  
-#      cisco.ios.ios_config:
-#        save_when: modified
 
-#- name: Configure etherchannel
-#  hosts: core_switches
-#  gather_facts: no
-#  roles:
-#    - etherchannel_config
-#  tasks:
-#    - name: Save etherchannel configuration  
-#      cisco.ios.ios_config:
-#        save_when: modified
-
-#- name: Configure routers
-#  hosts: routers
-#  gather_facts: no
-#  roles:
-#    - base_config
- #   - subint_config
- #   - ospf_config
-  #  - hsrp_config
+- name: Configure routers
+  hosts: routers
+  gather_facts: no
+  roles:
+    - base_config
+    - subint_config
+    - ospf_config
+    - hsrp_config
+    
 #  tasks:
 #    - name: Save production switches configuration  
 #      cisco.ios.ios_config:
