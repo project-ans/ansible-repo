@@ -1,3 +1,4 @@
+---
 - name: Configure HSRP for each VLAN sub-interface
   cisco.ios.ios_config:
     lines:
@@ -6,3 +7,5 @@
       - "standby {{ item.1.vlan }} priority {{ hsrp_priority[item.1.vlan|string] }}"
       - "standby {{ item.1.vlan }} preempt"
   loop: "{{ interfaces | subelements('subifs') }}"
+
+
