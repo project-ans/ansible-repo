@@ -1,4 +1,6 @@
-    - name: Enable Rapid PVST
-      cisco.ios.ios_config:
-        lines:
-          - spanning-tree mode rapid-pvst
+---
+- name: Enable Rapid PVST
+  cisco.ios.ios_config:
+    lines:
+      - spanning-tree mode rapid-pvst
+
