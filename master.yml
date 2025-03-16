@@ -2,6 +2,7 @@
 - name: Configure switches
   hosts: switches
   gather_facts: no
+  serial: 1
   roles:
     - base_config
     - vlan_config
@@ -11,18 +12,21 @@
 - name: Configure access ports
   hosts: access_switches
   gather_facts: no
+  serial: 1
   roles:
     - access_config
 
 - name: Configure etherchannel
   hosts: core_switches
   gather_facts: no
+  serial: 1
   roles:
     - etherchannel_config
 
 - name: Configure routers
   hosts: routers
   gather_facts: no
+  serial: 1
   roles:
     - base_config
     - subint_config
