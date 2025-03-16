@@ -1,28 +1,26 @@
-# group_vars/all.yml
-
 vlan_bureau_id: 20
 vlan_it_id: 30
 vlan_servers_id: 50
 vlan_mgmt_id: 41
 
 # Adresacja VLANów
-vlan_bureau_network: 10.0.20.0
-vlan_bureau_mask: 255.255.255.0
+#vlan_bureau_network: 10.0.20.0
+#vlan_bureau_mask: 255.255.255.0
 
-vlan_it_network: 10.0.30.0
-vlan_it_mask: 255.255.255.0
+#vlan_it_network: 10.0.30.0
+#vlan_it_mask: 255.255.255.0
 
-vlan_servers_network: 10.0.50.0
-vlan_servers_mask: 255.255.255.0
+#vlan_servers_network: 10.0.50.0
+#vlan_servers_mask: 255.255.255.0
 
-vlan_mgmt_network: 10.0.41.0
-vlan_mgmt_mask: 255.255.255.0
+#vlan_mgmt_network: 10.0.41.0
+#vlan_mgmt_mask: 255.255.255.0
 
 # Bramy domyślne
-vlan_bureau_gateway: 10.0.20.254
-vlan_it_gateway: 10.0.30.254
-vlan_servers_gateway: 10.0.50.254
-vlan_mgmt_gateway: 10.0.41.254
+#vlan_bureau_gateway: 10.0.20.254
+#vlan_it_gateway: 10.0.30.254
+#vlan_servers_gateway: 10.0.50.254
+#vlan_mgmt_gateway: 10.0.41.254
 
 trunk_vlans:
   - "{{ vlan_bureau_id }}"

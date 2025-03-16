@@ -1,0 +1,4 @@
+etherchannel_group: 1
+etherchannel_ports:
+  - e0/2
+  - e3/3
