@@ -1,3 +1,4 @@
+---
 - name: Configure OSPF basic process and router-id
   cisco.ios.ios_config:
     lines:
@@ -11,3 +12,5 @@
     lines:
       - "network {{ item.network }} {{ item.wildcard }} area {{ item.area }}"
   loop: "{{ ospf_networks }}"
+
+
