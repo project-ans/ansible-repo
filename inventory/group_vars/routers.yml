@@ -15,3 +15,5 @@ ospf_networks:
   - { network: "10.0.20.0", wildcard: "0.0.0.255", area: "0" }
   - { network: "10.0.30.0", wildcard: "0.0.0.255", area: "0" }
   - { network: "10.0.50.0", wildcard: "0.0.0.255", area: "0" }
+
+  

@@ -6,3 +6,10 @@
   - name: e1/0
   - name: e1/1
   - name: e3/3
+
+etherchannel_group: 1
+etherchannel_ports:
+  - e0/2
+  - e3/3
+
+  

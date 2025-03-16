@@ -7,3 +7,5 @@
       - "switchport access vlan {{ item.0.vlan_id }}"
       - "no shutdown"
   loop: "{{ access_config | subelements('ports') }}"
+
+

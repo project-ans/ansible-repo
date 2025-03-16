@@ -8,3 +8,5 @@
       - "switchport trunk allowed vlan add {{ trunk_vlans|join(',') }}"
       - "no shutdown"
   loop: "{{ trunk_ports }}"
+
+  
