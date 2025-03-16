@@ -1,6 +1,6 @@
 ---
 - name: Configure switches
-  hosts: production_switches
+  hosts: switches
   gather_facts: no
   roles:
     - base_config
