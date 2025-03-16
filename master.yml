@@ -7,7 +7,7 @@
     - base_config
     - vlan_config
     - trunk_config
-    - stp_config
+#    - stp_config
 
 - name: Configure access ports
   hosts: access_switches
