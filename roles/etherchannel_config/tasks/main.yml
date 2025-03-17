@@ -5,18 +5,11 @@
 #      - "channel-group {{ etherchannel_group }} mode desirable"
 #  loop: "{{ etherchannel_ports }}"
 
- - name: Configure EtherChannel on physical interfaces
-  block:
-    - name: Assign interface to EtherChannel group
-      cisco.ios.ios_config:
-        parents: "interface {{ item }}"
-        lines:
-          - "channel-group {{ etherchannel_group }} mode desirable"
-
-    - name: Wait for 1 second after configuring EtherChannel
-      pause:
-        seconds: 1
+- name: Configure EtherChannel on physical interfaces
+  cisco.ios.ios_config:
+    parents: "interface {{ item }}"
+    lines:
+      - "channel-group {{ etherchannel_group }} mode desirable"
   loop: "{{ etherchannel_ports }}"
   loop_control:
-    loop_var: item
- 
+    pause: 1
