@@ -14,12 +14,6 @@
   roles:
     - access_config
 
-- name: Configure etherchannel
-  hosts: SW1
-  gather_facts: no
-  roles:
-    - etherchannel_config
-
 - name: Configure routers
   hosts: routers
   gather_facts: no
@@ -29,8 +23,14 @@
     - ospf_config
     - hsrp_config
 
+- name: Configure etherchannel
+  hosts: SW1
+  gather_facts: no
+  roles:
+    - etherchannel_config    
+
 #  tasks:
-#    - name: Save production switches configuration  
+#    - name: Save  configuration  
 #      cisco.ios.ios_config:
 #        save_when: modified  
 
