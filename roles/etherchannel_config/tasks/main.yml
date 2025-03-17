@@ -12,4 +12,4 @@
       - "channel-group {{ etherchannel_group }} mode desirable"
   loop: "{{ etherchannel_ports }}"
   loop_control:
-    pause: 1
+    pause: 60
