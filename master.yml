@@ -1,33 +1,33 @@
-#---
-#- name: Configure switches
-#  hosts: switches
-#  gather_facts: no
-#  roles:
-#    - base_config
-#    - vlan_config
-#    - trunk_config
+---
+- name: Configure switches
+  hosts: switches
+  gather_facts: no
+  roles:
+    - base_config
+    - vlan_config
+    - trunk_config
 #    - stp_config
 
-#- name: Configure access ports
-#  hosts: access_switches
-#  gather_facts: no
-#  roles:
-#    - access_config
+- name: Configure access ports
+  hosts: access_switches
+  gather_facts: no
+  roles:
+    - access_config
 
 - name: Configure etherchannel
-  hosts: core_switches
+  hosts: SW1
   gather_facts: no
   roles:
     - etherchannel_config
 
-#- name: Configure routers
-#  hosts: routers
-#  gather_facts: no
-#  roles:
-#    - base_config
-#    - subint_config
-#    - ospf_config
-#    - hsrp_config
+- name: Configure routers
+  hosts: routers
+  gather_facts: no
+  roles:
+    - base_config
+    - subint_config
+    - ospf_config
+    - hsrp_config
 
 #  tasks:
 #    - name: Save production switches configuration  
